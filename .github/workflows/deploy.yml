@@ -35,4 +35,4 @@ jobs:
     - name: Invalidate cloudfront distribution
       env:
         APP_PATH: "${{ secrets.REACT_APP_GRAASP_DEVELOPER_ID }}/${{ secrets.REACT_APP_GRAASP_APP_ID }}/${{env.REACT_APP_VERSION}}"
-      run: aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION }} --paths /${{APP_PATH}}/*
+      run: aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION }} --paths /${APP_PATH}/*
