@@ -29,10 +29,10 @@ jobs:
 
     - name: Copy files to AWS Bucket
       env:
-        APP_DIR: "${{ secrets.BUCKET }}/${{ secrets.REACT_APP_GRAASP_DEVELOPER_ID }}/${{ secrets.REACT_APP_GRAASP_APP_ID }}/${env.REACT_APP_VERSION}/"
-      run: aws s3 sync $BUILD_FOLDER s3://$APP_DIR --delete
+        APP_DIR: "${{ secrets.BUCKET }}/${{ secrets.REACT_APP_GRAASP_DEVELOPER_ID }}/${{ secrets.REACT_APP_GRAASP_APP_ID }}/${{env.REACT_APP_VERSION}}/"
+      run: aws s3 sync ${{env.BUILD_FOLDER}} s3://$APP_DIR --delete
 
     - name: Invalidate cloudfront distribution
       env:
-        APP_PATH: "${{ secrets.REACT_APP_GRAASP_DEVELOPER_ID }}/${{ secrets.REACT_APP_GRAASP_APP_ID }}/${env.REACT_APP_VERSION}"
-      run: aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION }} --paths /$APP_PATH/*
+        APP_PATH: "${{ secrets.REACT_APP_GRAASP_DEVELOPER_ID }}/${{ secrets.REACT_APP_GRAASP_APP_ID }}/${{env.REACT_APP_VERSION}}"
+      run: aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION }} --paths /${{APP_PATH}}/*
