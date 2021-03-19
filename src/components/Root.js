@@ -28,6 +28,8 @@ ReactGa.ga(
   `/${REACT_APP_APPS_DEVELOPER_ID}/${REACT_APP_APP_ID}/${REACT_APP_VERSION}/`,
 );
 
+console.log(`/${REACT_APP_APPS_DEVELOPER_ID}/${REACT_APP_APP_ID}/${REACT_APP_VERSION}/`)
+
 const styles = {
   root: {
     flexGrow: 1,
